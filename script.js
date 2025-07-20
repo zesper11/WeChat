@@ -11,8 +11,8 @@ whileLoading()
 
 
 createAccountNextBtn.addEventListener('click' , () => {
+    let username = userInput.value;
     if(username.length >= 3){
-        let username = userInput.value;
     localStorage.setItem('username' , username);
     localStorage.setItem('pfp' , profilepictures[pfpIndex])
     console.info(`registered as @${userInput.value}`);
