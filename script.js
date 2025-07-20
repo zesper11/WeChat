@@ -29,7 +29,7 @@ pfpIndex = 0;
 
 pfpBtnBack.onclick = () => {
     pfpIndex--
-    if(pfpIndex = 0){
+    if(pfpIndex === 0){
         pfpIndex = profilepictures.length - 1;
     }
     pfp.src = profilepictures[pfpIndex];
@@ -37,7 +37,7 @@ pfpBtnBack.onclick = () => {
 
 pfpBtnNext.onclick = () => {
     pfpIndex++
-    if(pfpIndex == profilepictures.length - 1){
+    if(pfpIndex === profilepictures.length - 1){
         pfpIndex = 0;
     }
     pfp.src = profilepictures[pfpIndex];
