@@ -4,6 +4,7 @@ const createAccountNextBtn = document.querySelector('.create-account-next-btn');
 createAccountNextBtn.onClick = () => {
     let username = userInput.value;
     localStorage.setItem('username' , username);
+    console.log(userInput.value);
+
 }
 
-console.log('hello');
