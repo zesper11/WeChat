@@ -4,17 +4,23 @@ const createAccountSection = document.querySelector('#create-account')
 const pfpBtnNext = document.querySelector('.select-pfp-next-btn');
 const pfpBtnBack = document.querySelector('.select-pfp-back-btn');
 const pfp = document.querySelector('.select-pfp img');
+const createAccountMsg = document.querySelector('.create-account-message');
 
 // scripts to run while loading 
 whileLoading()
 
 
 createAccountNextBtn.addEventListener('click' , () => {
-    let username = userInput.value;
+    if(username.length >= 3){
+        let username = userInput.value;
     localStorage.setItem('username' , username);
     localStorage.setItem('pfp' , profilepictures[pfpIndex])
     console.info(`registered as @${userInput.value}`);
     createAccountSection.style.display = 'none';
+    }else{
+        createAccountMsg.textContent = 'the username must be three characters or longer and shouldnot contain any offensive words'
+    }
+    
 })
 
 function whileLoading(){
