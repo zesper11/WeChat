@@ -14,6 +14,7 @@ createAccountNextBtn.addEventListener('click' , () => {
     localStorage.setItem('username' , username);
     localStorage.setItem('pfp' , profilepictures[pfpIndex])
     console.info(`registered as @${userInput.value}`);
+    createAccountSection.style.display = 'none';
 })
 
 function whileLoading(){
