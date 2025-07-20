@@ -6,7 +6,3 @@ createAccountNextBtn.addEventListener('click' , () => {
     localStorage.setItem('username' , username);
     console.log(userInputValue);
 })
-    
-
-
-
