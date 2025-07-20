@@ -14,7 +14,7 @@ createAccountNextBtn.addEventListener('click' , () => {
 
 function whileLoading(){
     if(localStorage.getItem('username')){
-        createAccountSection.style.display = 'none';
-        console.info(`logged in as @${localStorage.getItem('username')}`)
+        // createAccountSection.style.display = 'none';
+        // console.info(`logged in as @${localStorage.getItem('username')}`)
     }
 }
