@@ -14,7 +14,7 @@ createAccountNextBtn.addEventListener('click' , () => {
 
 function whileLoading(){
     if(localStorage.getItem('username')){
-        console.error('already register');
         createAccountSection.style.display = 'none';
+        console.info(`logged in as @${localStorage.getItem('username')}`)
     }
 }
