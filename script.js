@@ -1,4 +1,4 @@
-const userInput = document.querySelector('#create-account input');
+const userInput = document.querySelector('.username-input');
 const createAccountNextBtn = document.querySelector('.create-account-next-btn');
 
 userInput.addEventListener('click' , () => {
