@@ -5,3 +5,5 @@ createAccountNextBtn.onClick = () => {
     let username = userInput.value;
     localStorage.setItem('username' , username);
 }
+
+console.log('hello');
