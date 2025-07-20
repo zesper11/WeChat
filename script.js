@@ -1,7 +1,8 @@
-const userInputValue = document.querySelector('.username-input').value;
+const userInput = document.querySelector('.username-input');
 const createAccountNextBtn = document.querySelector('.create-account-next-btn');
 
 createAccountNextBtn.addEventListener('click' , () => {
-    localStorage.setItem('username' , 'username');
-    console.log(userInputValue);
+    let username = userInput.value;
+    localStorage.setItem('username' , username);
+    console.log(userInput).value;
 })
