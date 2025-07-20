@@ -1,5 +1,6 @@
 const userInput = document.querySelector('.username-input');
 const createAccountNextBtn = document.querySelector('.create-account-next-btn');
+const createAccountSection = document.querySelector('#create-account')
 
 // scripts to run while loading 
 whileLoading()
@@ -14,6 +15,6 @@ createAccountNextBtn.addEventListener('click' , () => {
 function whileLoading(){
     if(localStorage.getItem('username')){
         console.error('already register');
-        
+        createAccountSection.style.display = 'none';
     }
 }
