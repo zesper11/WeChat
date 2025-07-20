@@ -70,6 +70,8 @@ fetch(API_URL, { headers: HEADERS })
   .then(res => res.json())
   .then(data => {
     messages = data.record; // ✅ JSONBin puts your array inside `record`
+    console.log(messages)
+
   })
   .catch(err => {
     console.error('Failed to fetch from JSONBin:', err);
