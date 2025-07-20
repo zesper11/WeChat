@@ -12,13 +12,14 @@ whileLoading()
 createAccountNextBtn.addEventListener('click' , () => {
     let username = userInput.value;
     localStorage.setItem('username' , username);
+    localStorage.setItem('pfp' , profilepictures[pfpIndex])
     console.info(`registered as @${userInput.value}`);
 })
 
 function whileLoading(){
     if(localStorage.getItem('username')){
-        // createAccountSection.style.display = 'none';
-        // console.info(`logged in as @${localStorage.getItem('username')}`)
+        createAccountSection.style.display = 'none';
+        console.info(`logged in as @${localStorage.getItem('username')}`)
     }
 }
 
