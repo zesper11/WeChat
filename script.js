@@ -6,3 +6,10 @@ createAccountNextBtn.addEventListener('click' , () => {
     localStorage.setItem('username' , username);
     console.info(`registered as @${userInput.value}`);
 })
+
+function whileLoading(){
+    if(localStorage.getItem('username')){
+        console.error('already register');
+        
+    }
+}
