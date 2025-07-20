@@ -26,6 +26,7 @@ function whileLoading(){
 const profilepictures = ['profile pictures/buddha.jpg','profile pictures/adidas.jpg','profile pictures/barcelona.jpg','profile pictures/car.jpg','profile pictures/messi.jpg','profile pictures/defult.jpg','profile pictures/drawing.jpg','profile pictures/laptop.jpg','profile pictures/spiderman.jpg']
 
 pfpIndex = 0;
+pfp.src = profilepictures[pfpIndex];
 
 pfpBtnBack.onclick = () => {
     pfpIndex--
