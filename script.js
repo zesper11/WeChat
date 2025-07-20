@@ -70,14 +70,24 @@ fetch(API_URL, { headers: HEADERS })
   .then(res => res.json())
   .then(data => {
     messages = data.record; // ✅ JSONBin puts your array inside `record`
-    console.log(messages)
+
 
   })
   .catch(err => {
     console.error('Failed to fetch from JSONBin:', err);
   });
 
-  // show all usernames
-messages.forEach(msg => {
-  console.log(msg.username + ': ' + msg.message);
-});
+
+  function doSomethingWithMessages() {
+  if (messages.length === 0) {
+    // Not loaded yet, so wait and try again later
+    console.log('Messages not loaded, waiting...');
+    setTimeout(doSomethingWithMessages, 100); // try again after 100ms
+    return;
+  }
+
+  // Now messages are loaded, do your stuff
+  messages.forEach(msg => {
+    console.log(msg.username + ': ' + msg.message);
+  });
+}
