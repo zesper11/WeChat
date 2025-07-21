@@ -66,7 +66,7 @@ function loadAndMessages() {
   fetch(API_URL, { headers: HEADERS })
     .then(res => res.json())
     .then(data => {
-      messages = data.record || [];
+      messages = data.record;
 
       messages.forEach(msg => {
         console.log(`${msg.username}: ${msg.message}`);d
