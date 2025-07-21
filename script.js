@@ -61,16 +61,23 @@ const HEADERS = {
 };
 let messages = [];
 
-
-function loadAndMessages() {
+function loadMessages() {
   fetch(API_URL, { headers: HEADERS })
     .then(res => res.json())
     .then(data => {
-      messages = data.record;
+      messages = data.record || [];
 
-      messages.forEach(msg => {
-        console.log(`${msg.username}: ${msg.message}`);d
-      });
+      if (messages.length > 0) {
+        messages.forEach(msg => {
+          console.log(`${msg.username}: ${msg.message}`);
+        });
+      } else {
+        console.warn('No messages to display.');
+      }
     })
     .catch(err => console.error('Failed to fetch messages:', err));
 }
+
+
+loadMessages(); // first time immediately
+setInterval(loadMessages, 1000); 
