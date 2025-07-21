@@ -6,7 +6,7 @@ const pfpBtnBack = document.querySelector('.select-pfp-back-btn');
 const pfp = document.querySelector('.select-pfp img');
 const createAccountMsg = document.querySelector('.create-account-message');
 const messageSent = document.querySelectorAll('.main-chat-interface sent span');
-const messageReceived = document.querySelectorAll('.main-chat-interface received span');
+const messageReceived = document.querySelectorAll('.main-chat-interface .received span');
 
 // scripts to run while loading 
 whileLoading()
@@ -72,7 +72,7 @@ function loadMessages() {
       if (messages.length > 0) {
         messages.forEach(msg => {
         //   console.log(`${msg.username}: ${msg.message}`);
-        messageReceived.innerHTML = msg.message;
+        messageReceived.textContent = msg[message];
 
         });
       } else {
