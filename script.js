@@ -72,7 +72,7 @@ function loadMessages() {
       messageIndex = 0;
       if (messages.length > 0) {
         messages.forEach(msg => {
-          console.log(`${msg.username}: ${msg.message}`);
+        //   console.log(`${msg.username}: ${msg.message}`);
         messageReceived.textContent = messages[messageIndex].message;
         messageIndex++
 
