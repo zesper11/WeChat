@@ -69,8 +69,7 @@ function loadAndMessages() {
       messages = data.record || [];
 
       messages.forEach(msg => {
-        console.log(`${msg.username}: ${msg.message}`);
-        
+        console.log(`${msg.username}: ${msg.message}`);d
       });
     })
     .catch(err => console.error('Failed to fetch messages:', err));
