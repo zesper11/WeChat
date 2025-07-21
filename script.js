@@ -69,7 +69,7 @@ function loadMessages() {
 
       if (messages.length > 0) {
         messages.forEach(msg => {
-          console.log(`${msg.username}: ${msg.message}`);
+        //   console.log(`${msg.username}: ${msg.message}`);
         });
       } else {
         console.warn('No messages to display.');
