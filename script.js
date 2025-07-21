@@ -5,6 +5,8 @@ const pfpBtnNext = document.querySelector('.select-pfp-next-btn');
 const pfpBtnBack = document.querySelector('.select-pfp-back-btn');
 const pfp = document.querySelector('.select-pfp img');
 const createAccountMsg = document.querySelector('.create-account-message');
+const messageSent = document.querySelectorAll('.main-chat-interface sent');
+const messageReceived = document.querySelectorAll('.main-chat-interface received');
 
 // scripts to run while loading 
 whileLoading()
@@ -18,7 +20,7 @@ createAccountNextBtn.addEventListener('click' , () => {
     console.info(`registered as @${userInput.value}`);
     createAccountSection.style.display = 'none';
     }else{
-        createAccountMsg.textContent = 'the username must be three characters or longer and shouldnot contain any offensive words'
+        createAccountMsg.textContent = 'the username must be three characters or longer and should not contain any offensive words'
     }
     
 })
@@ -67,9 +69,13 @@ function loadMessages() {
     .then(data => {
       messages = data.record || [];
 
+      messageIndex = 0;
       if (messages.length > 0) {
         messages.forEach(msg => {
         //   console.log(`${msg.username}: ${msg.message}`);
+        messageReceived.textContent = messages[messageIndex];
+        messageIndex++
+
         });
       } else {
         console.warn('No messages to display.');
