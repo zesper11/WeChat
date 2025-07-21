@@ -73,6 +73,7 @@ function loadMessages() {
         messages.forEach(msg => {
         //   console.log(`${msg.username}: ${msg.message}`);
         messageReceived.textContent = msg.message;
+        console.log(msg.message)
 
         });
       } else {
