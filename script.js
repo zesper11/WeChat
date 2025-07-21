@@ -69,12 +69,10 @@ function loadMessages() {
     .then(data => {
       messages = data.record || [];
 
-      messageIndex = 0;
       if (messages.length > 0) {
         messages.forEach(msg => {
         //   console.log(`${msg.username}: ${msg.message}`);
-        messageReceived.textContent = msg.message;
-        messageIndex++
+        messageReceived.innerHTML = msg.message;
 
         });
       } else {
