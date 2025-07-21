@@ -6,7 +6,7 @@ const pfpBtnBack = document.querySelector('.select-pfp-back-btn');
 const pfp = document.querySelector('.select-pfp img');
 const createAccountMsg = document.querySelector('.create-account-message');
 const messageSent = document.querySelectorAll('.main-chat-interface sent span');
-const messageReceived = document.querySelectorAll('.main-chat-interface .received span');
+const messageReceived = document.querySelectorAll('.received span');
 
 // scripts to run while loading 
 whileLoading()
