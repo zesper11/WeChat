@@ -52,15 +52,26 @@ pfpBtnNext.onclick = () => {
     pfp.src = profilepictures[pfpIndex];
 }
 
-// json bin message system
 
-fetch(API_URL, { headers: HEADERS })
-  .then(res => res.json())
-  .then(data => {
-    messages = data.record || [];
+//main chat function used jsonbin
 
-    
-    messages.forEach(msg => {
-      console.log(msg.username + ': ' + msg.message);
-    });
-  })
+const API_URL = 'https://api.jsonbin.io/v3/b/687ce881ee4b395e61f23b17/latest';
+const HEADERS = {
+  'X-Master-Key': '$2a$10$fv8piFnoMQmqN2haULO6B.J7lBcThIhQmnhQqchrj1CuG3uJ6E95m '
+};
+let messages = [];
+
+
+function loadAndMessages() {
+  fetch(API_URL, { headers: HEADERS })
+    .then(res => res.json())
+    .then(data => {
+      messages = data.record || [];
+
+      messages.forEach(msg => {
+        console.log(`${msg.username}: ${msg.message}`);
+        
+      });
+    })
+    .catch(err => console.error('Failed to fetch messages:', err));
+}
