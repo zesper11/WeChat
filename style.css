@@ -1,0 +1,98 @@
+body {
+    background-color: black;
+}
+
+.square {
+    margin: 23px;
+    border: 2px solid white;
+    height: 520px;
+    width: 1300px;
+    background-color: black;
+}
+
+.inner-square {
+    margin-top: 0px;
+    margin-left: 400px;
+    border-radius: 20px;
+    width: 550px;
+    height: 408px;
+    background-color: black;
+    border: 2px solid orangered;
+}
+
+.words {
+    color: white;
+    margin-top: 40px;
+    margin-left: 582px;
+}
+
+.inner-tab {
+    display: flex;
+    flex-direction: column;
+}
+
+.inner-tab1 {
+    height: 59px; /* Increased height */
+    width: 235px;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin-top: 28px;
+    margin-left: 35px;
+}
+
+.inner-tab2 {
+    height: 59px;
+    width: 235px;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin-top: 53px;
+    margin-left: 35px;
+
+}
+
+.inner-tab3 {
+    height: 59px;
+    width: 235px;
+    border: 2px solid white;
+    border-radius: 8px;
+    margin-left: 288px;
+    margin-top: 53px;
+}
+.message-box {
+    height: 32px;
+    width: 520px;
+    border: 2px solid orangered;
+    margin-top: 42px;
+    border-radius: 8px;
+    margin-left: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inner-words1 {
+    color: white;
+    margin: 5px;
+}
+.inner-words2{
+    color: white;
+    margin: 5px;
+}
+.inner-words3{
+    color: white;
+    margin: 39px;
+}
+.circular-img {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+}
+.appreciation{
+    color: white;
+justify-content: center;
+align-items: center;
+margin-left: 559px;
+
+}
