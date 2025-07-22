@@ -1,15 +1,13 @@
 // script.js
-const API_URL = 'https://api.jsonbin.io/v3/b/YOUR_BIN_ID';
+const API_URL = 'https://api.jsonbin.io/v3/b/687ce881ee4b395e61f23b17';
 const HEADERS = {
-  'X-Master-Key': 'YOUR_SECRET_KEY',
+  'X-Master-Key': '$2a$10$fv8piFnoMQmqN2haULO6B.J7lBcThIhQmnhQqchrj1CuG3uJ6E95m',
   'Content-Type': 'application/json'
 };
 
-let messages = [], pfps = [
-  'profile-pictures/car.jpg',
-  'profile-pictures/spiderman.jpg',
-  'profile-pictures/messi.jpg'
-];
+let messages = [],
+
+pfps = ['profile pictures/buddha.jpg','profile pictures/adidas.jpg','profile pictures/barcelona.jpg','profile pictures/car.jpg','profile pictures/messi.jpg','profile pictures/defult.jpg','profile pictures/drawing.jpg','profile pictures/laptop.jpg','profile pictures/spiderman.jpg']
 let pfpIndex = 0;
 
 const profileSection = document.getElementById('profileSection'),
