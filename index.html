@@ -1,33 +1,36 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Modern Chat</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>We Chat</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <div id="profileSection" class="panel">
-      <img id="pfpPreview" src="profile-pictures/car.jpg" class="pfp-preview">
+    <div id="profileSection" class="panel active">
+      <h1>Welcome to <span class="brand">We Chat</span></h1>
+      <img id="pfpPreview" src="profile pictures/car.jpg" class="pfp-preview" alt="Profile Picture Preview" />
       <div class="pfp-nav">
-        <button onclick="prevPfp()">◀</button>
-        <button onclick="nextPfp()">▶</button>
+        <button aria-label="Previous profile picture" onclick="prevPfp()">◀</button>
+        <button aria-label="Next profile picture" onclick="nextPfp()">▶</button>
       </div>
-      <input id="usernameInput" placeholder="Enter username (min 3 chars)" />
-      <button onclick="createAccount()">Join Chat</button>
+      <input id="usernameInput" type="text" placeholder="Enter username (min 3 chars)" autocomplete="off" minlength="3" />
+      <button id="joinBtn" onclick="createAccount()">Join Chat</button>
     </div>
     <div id="chatSection" class="panel">
-      <header>Chatting as <span id="currentUsername"></span></header>
-      <div id="messages" class="messages"></div>
-      <form id="messageForm">
-        <input id="messageInput" placeholder="Type a message..." autocomplete="off" />
-        <button type="submit">➤</button>
+      <header>
+        Chatting as <span id="currentUsername"></span>
+      </header>
+      <div id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+      <form id="messageForm" autocomplete="off" aria-label="Send message form">
+        <input id="messageInput" type="text" placeholder="Type a message..." autocomplete="off" />
+        <button type="submit" aria-label="Send message">➤</button>
       </form>
     </div>
   </div>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
