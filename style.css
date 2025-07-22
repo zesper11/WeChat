@@ -1,3 +1,4 @@
+/* Container fills viewport and centers content */
 .container {
   width: 100vw;
   max-width: 600px;
@@ -8,21 +9,85 @@
   position: relative;
 }
 
-/* Chat Section */
-#chatSection {
-  display: flex;
+/* Profile and Chat panels: only one active at a time */
+.panel {
+  display: none;
   flex-direction: column;
-  flex: 1;
-  position: relative;
-  padding-bottom: 70px; /* space for fixed input form */
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden; /* prevent scroll on panel itself */
 }
 
+.panel.active {
+  display: flex;
+}
+
+/* Profile Section */
+#profileSection {
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+/* Profile picture preview */
+.pfp-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Profile pic navigation buttons */
+.pfp-nav {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.pfp-nav button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: 1px solid #000;
+  background: transparent;
+  border-radius: 6px;
+}
+
+/* Username input and join button */
+#usernameInput, #joinBtn {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+
+#joinBtn {
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+/* Chat Section */
+#chatSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 70px; /* space for fixed input */
+  overflow: hidden; /* hide scrollbars on container */
+}
+
+/* Chat header */
 #chatSection header {
   width: 100%;
   font-weight: 600;
   margin-bottom: 1rem;
   text-align: center;
-  flex-shrink: 0;
+  flex-shrink: 0; /* keep header visible */
 }
 
 /* Scrollable messages container */
@@ -38,7 +103,7 @@
   scroll-behavior: smooth;
 }
 
-/* Message bubbles etc. */
+/* Message container */
 .message {
   display: flex;
   align-items: flex-end;
@@ -47,6 +112,7 @@
   word-wrap: break-word;
 }
 
+/* Profile pictures inside messages */
 .message img {
   width: 36px;
   height: 36px;
@@ -55,18 +121,28 @@
   flex-shrink: 0;
 }
 
+/* Sent message aligned right, reverse flex */
 .message.sent {
   align-self: flex-end;
   flex-direction: row-reverse;
 }
 
+/* Message bubble */
 .message .bubble {
   padding: 0.75rem 1rem;
   border-radius: 18px;
   word-wrap: break-word;
+  background: #f0f0f0; /* very light neutral */
+  color: #000;
 }
 
-/* Fixed input form at bottom */
+/* Sent message bubble style */
+.message.sent .bubble {
+  background: #007bff;
+  color: #fff;
+}
+
+/* Fixed message input form at bottom */
 #messageForm {
   position: fixed;
   bottom: 20px;
@@ -78,23 +154,24 @@
   gap: 0.5rem;
   padding: 0 12px;
   box-sizing: border-box;
-  background: white; /* or transparent if you want */
+  background: #fff;
   z-index: 9999;
   border-radius: 30px;
   align-items: center;
   box-shadow: 0 0 12px rgba(0,0,0,0.15);
 }
 
-/* Input inside fixed form */
+/* Message input */
 #messageInput {
   flex: 1;
-  border: 1px solid black;
+  border: 1px solid #000;
   border-radius: 20px;
   padding-left: 1rem;
   padding-right: 1rem;
   font-size: 1rem;
   height: 48px;
   box-sizing: border-box;
+  outline: none;
 }
 
 /* Send button */
@@ -106,7 +183,13 @@
   line-height: 1;
   text-align: center;
   padding: 0;
-  border: 1px solid black;
-  background: white;
+  border: 1px solid #000;
+  background: #fff;
   cursor: pointer;
+  user-select: none;
+}
+
+/* Disable outline on button focus for better UI */
+#messageForm button:focus {
+  outline: none;
 }
