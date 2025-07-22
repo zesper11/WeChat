@@ -1,37 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Public Chat</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modern Chat</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
-    <!-- Profile Section -->
-    <div class="profile-section" id="profileSection">
-      <img id="pfpPreview" src="profile-pictures/default.jpg" alt="pfp" class="pfp-preview">
-      <div class="pfp-options">
-        <button onclick="prevPfp()">⬅️</button>
-        <button onclick="nextPfp()">➡️</button>
+    <div id="profileSection" class="panel">
+      <img id="pfpPreview" src="profile-pictures/car.jpg" class="pfp-preview">
+      <div class="pfp-nav">
+        <button onclick="prevPfp()">◀</button>
+        <button onclick="nextPfp()">▶</button>
       </div>
-      <input type="text" id="usernameInput" placeholder="Enter a unique username" />
+      <input id="usernameInput" placeholder="Enter username (min 3 chars)" />
       <button onclick="createAccount()">Join Chat</button>
     </div>
-
-    <!-- Chat Section -->
-    <div class="chat-section" id="chatSection">
+    <div id="chatSection" class="panel">
       <header>Chatting as <span id="currentUsername"></span></header>
-      <div class="messages" id="messages"></div>
+      <div id="messages" class="messages"></div>
       <form id="messageForm">
-        <input type="text" id="messageInput" placeholder="Type your message here...">
+        <input id="messageInput" placeholder="Type a message..." autocomplete="off" />
         <button type="submit">➤</button>
       </form>
-      <footer>made with ❤️ by rohan & piyush</footer>
     </div>
   </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

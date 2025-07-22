@@ -1,56 +1,54 @@
-const API_URL = 'https://api.jsonbin.io/v3/b/687ce881ee4b395e61f23b17';
+// script.js
+const API_URL = 'https://api.jsonbin.io/v3/b/YOUR_BIN_ID';
 const HEADERS = {
-  'X-Master-Key': '$2a$10$fv8piFnoMQmqN2haULO6B.J7lBcThIhQmnhQqchrj1CuG3uJ6E95m',
+  'X-Master-Key': 'YOUR_SECRET_KEY',
   'Content-Type': 'application/json'
 };
 
-let messages = [];
-let pfps = ['profile pictures/buddha.jpg','profile pictures/adidas.jpg','profile pictures/barcelona.jpg','profile pictures/car.jpg','profile pictures/messi.jpg','profile pictures/defult.jpg','profile pictures/drawing.jpg','profile pictures/laptop.jpg','profile pictures/spiderman.jpg']
+let messages = [], pfps = [
+  'profile-pictures/car.jpg',
+  'profile-pictures/spiderman.jpg',
+  'profile-pictures/messi.jpg'
+];
 let pfpIndex = 0;
 
-const profileSection = document.getElementById('profileSection');
-const chatSection = document.getElementById('chatSection');
-const pfpPreview = document.getElementById('pfpPreview');
-const usernameInput = document.getElementById('usernameInput');
-const currentUsername = document.getElementById('currentUsername');
-const messagesDiv = document.getElementById('messages');
-const messageForm = document.getElementById('messageForm');
-const messageInput = document.getElementById('messageInput');
+const profileSection = document.getElementById('profileSection'),
+      chatSection = document.getElementById('chatSection'),
+      pfpPreview = document.getElementById('pfpPreview'),
+      usernameInput = document.getElementById('usernameInput'),
+      currentUsername = document.getElementById('currentUsername'),
+      messagesDiv = document.getElementById('messages'),
+      messageForm = document.getElementById('messageForm'),
+      messageInput = document.getElementById('messageInput');
 
 function prevPfp() {
   pfpIndex = (pfpIndex - 1 + pfps.length) % pfps.length;
   pfpPreview.src = pfps[pfpIndex];
 }
-
 function nextPfp() {
   pfpIndex = (pfpIndex + 1) % pfps.length;
   pfpPreview.src = pfps[pfpIndex];
 }
-
 function createAccount() {
-  const username = usernameInput.value.trim();
-  if (!username) return;
-
-  localStorage.setItem('username', username);
+  const name = usernameInput.value.trim();
+  if (name.length < 3) return;
+  localStorage.setItem('username', name);
   localStorage.setItem('pfp', pfps[pfpIndex]);
-
-  currentUsername.textContent = '@' + username;
+  currentUsername.textContent = '@' + name;
   profileSection.classList.remove('active');
   chatSection.classList.add('active');
   updateChat();
 }
 
 function renderMessages() {
-  messagesDiv.innerHTML = '';
   const user = localStorage.getItem('username');
+  messagesDiv.innerHTML = '';
   messages.forEach(msg => {
     const div = document.createElement('div');
-    div.className = 'message ' + (msg.username === user ? 'sent' : 'received');
-
+    div.className = `message ${msg.username === user ? 'sent' : 'received'}`;
     div.innerHTML = `
-      <img src="${msg.pfp}" alt="pfp">
-      <div><strong>${msg.username}</strong><br>${msg.message}</div>
-    `;
+      <img src="${msg.pfp}">
+      <div class="bubble"><strong>${msg.username}</strong><br>${msg.message}</div>`;
     messagesDiv.appendChild(div);
   });
   messagesDiv.scrollTop = messagesDiv.scrollHeight;
@@ -62,38 +60,24 @@ function updateChat() {
     .then(data => {
       messages = data.record || [];
       renderMessages();
-    })
-    .catch(err => console.error('Fetch error:', err));
+    });
 }
 
 messageForm.addEventListener('submit', e => {
   e.preventDefault();
-  const username = localStorage.getItem('username');
-  const pfp = localStorage.getItem('pfp');
   const msg = messageInput.value.trim();
   if (!msg) return;
-
-  const newMsg = {
-    username,
-    pfp,
+  messages.push({
+    username: localStorage.getItem('username'),
+    pfp: localStorage.getItem('pfp'),
     date: new Date().toISOString(),
     message: msg
-  };
-
-  messages.push(newMsg);
+  });
   renderMessages();
   messageInput.value = '';
-
-  fetch(API_URL, {
-    method: 'PUT',
-    headers: HEADERS,
-    body: JSON.stringify(messages)
-  });
+  fetch(API_URL, { method:'PUT', headers:HEADERS, body: JSON.stringify(messages) });
 });
 
-setInterval(updateChat, 200);
-
-// Start on profile page
 if (!localStorage.getItem('username')) {
   profileSection.classList.add('active');
 } else {
@@ -101,3 +85,4 @@ if (!localStorage.getItem('username')) {
   chatSection.classList.add('active');
   updateChat();
 }
+setInterval(updateChat, 200);
