@@ -1,98 +1,138 @@
 body {
-    background-color: black;
+  margin: 0;
+  background: #111;
+  font-family: 'Fira Code', monospace;
+  color: #f77;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-.square {
-    margin: 23px;
-    border: 2px solid white;
-    height: 520px;
-    width: 1300px;
-    background-color: black;
+.container {
+  border: 2px solid #fff2;
+  padding: 20px;
+  max-width: 800px;
+  width: 100%;
 }
 
-.inner-square {
-    margin-top: 0px;
-    margin-left: 400px;
-    border-radius: 20px;
-    width: 550px;
-    height: 408px;
-    background-color: black;
-    border: 2px solid orangered;
+.profile-section, .chat-section {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }
 
-.words {
-    color: white;
-    margin-top: 40px;
-    margin-left: 582px;
+.profile-section.active, .chat-section.active {
+  display: flex;
 }
 
-.inner-tab {
-    display: flex;
-    flex-direction: column;
+.pfp-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #f77;
 }
 
-.inner-tab1 {
-    height: 59px; /* Increased height */
-    width: 235px;
-    border: 2px solid white;
-    border-radius: 8px;
-    margin-top: 28px;
-    margin-left: 35px;
+.pfp-options button {
+  font-size: 1.5rem;
+  margin: 0 10px;
+  background: transparent;
+  color: #f77;
+  border: none;
+  cursor: pointer;
 }
 
-.inner-tab2 {
-    height: 59px;
-    width: 235px;
-    border: 2px solid white;
-    border-radius: 8px;
-    margin-top: 53px;
-    margin-left: 35px;
-
+input[type="text"] {
+  padding: 10px;
+  font-family: 'Fira Code', monospace;
+  width: 80%;
+  border: none;
+  border-bottom: 2px solid #f77;
+  background: transparent;
+  color: #fff;
+  outline: none;
 }
 
-.inner-tab3 {
-    height: 59px;
-    width: 235px;
-    border: 2px solid white;
-    border-radius: 8px;
-    margin-left: 288px;
-    margin-top: 53px;
+button {
+  padding: 10px 20px;
+  background: #f77;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
 }
-.message-box {
-    height: 32px;
-    width: 520px;
-    border: 2px solid orangered;
-    margin-top: 42px;
-    border-radius: 8px;
-    margin-left: 10px;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.inner-words1 {
-    color: white;
-    margin: 5px;
-}
-.inner-words2{
-    color: white;
-    margin: 5px;
-}
-.inner-words3{
-    color: white;
-    margin: 39px;
-}
-.circular-img {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid white;
-}
-.appreciation{
-    color: white;
-justify-content: center;
-align-items: center;
-margin-left: 559px;
 
+.chat-section header {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.messages {
+  height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border: 1px dashed #f77;
+  width: 100%;
+  background: #222;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  max-width: 70%;
+  padding: 10px;
+  border: 1px solid #f77;
+  border-radius: 10px;
+  background: #111;
+  font-size: 0.9rem;
+}
+
+.message.sent {
+  align-self: flex-end;
+  background: #f772;
+  color: #000;
+}
+
+.message.received {
+  align-self: flex-start;
+}
+
+.message img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #f77;
+}
+
+#messageForm {
+  display: flex;
+  margin-top: 10px;
+  width: 100%;
+}
+
+#messageInput {
+  flex: 1;
+  background: transparent;
+  color: #fff;
+  border: none;
+  border-bottom: 2px solid #f77;
+  font-family: 'Fira Code';
+  padding: 8px;
+  outline: none;
+}
+
+#messageForm button {
+  padding: 8px 16px;
+}
+
+footer {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #aaa;
 }
