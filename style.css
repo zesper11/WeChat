@@ -138,37 +138,169 @@ header {
   user-select: none;
 }
 
-.messages {
-  flex: 1;
-  width: 100%;
-  max-height: calc(100vh - 230px);
-  overflow-y: auto;
+#chatSection {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding-right: 6px;
-  scrollbar-width: thin;
-  scrollbar-color: #64b5f6 transparent;
+  height: 100%;
+  width: 100%;
+  max-height: 100vh;
+  padding: 0 24px 24px;
+  background: rgba(18, 18, 18, 0.75);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(100, 149, 237, 0.4);
   user-select: text;
-  scroll-behavior: smooth;
 }
 
+/* Header */
+#chatSection > header {
+  font-weight: 700;
+  font-size: 20px;
+  color: #90caf9;
+  text-align: center;
+  padding: 20px 0 10px;
+  border-bottom: 1px solid #2c2c2c;
+  user-select: none;
+  letter-spacing: 0.03em;
+}
+
+/* Messages area */
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: #64b5f6 transparent;
+  scroll-behavior: smooth;
+  border-radius: 0 0 20px 20px;
+  background: linear-gradient(145deg, #1a1a1a, #121212);
+  box-shadow: inset 0 0 20px rgba(100, 149, 237, 0.15);
+}
+
+/* Scrollbar for webkit */
 .messages::-webkit-scrollbar {
   width: 8px;
-}
-.messages::-webkit-scrollbar-track {
-  background: transparent;
 }
 .messages::-webkit-scrollbar-thumb {
   background-color: #64b5f6;
   border-radius: 10px;
 }
 
+/* Each message */
 .message {
+  max-width: 75%;
   display: flex;
   align-items: flex-end;
   gap: 12px;
-  max-width: 75%;
   word-wrap: break-word;
-  user-select: t
+  font-size: 15px;
+  user-select: text;
+  position: relative;
+}
+
+/* Profile pics inside message */
+.message img {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 6px #6495ed77;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* Sent message alignment */
+.message.sent {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+/* Message bubble */
+.message .bubble {
+  padding: 16px 22px;
+  border-radius: 28px;
+  background: #262626;
+  color: #d0d0d0;
+  box-shadow: 0 4px 12px rgba(100, 149, 237, 0.25);
+  white-space: pre-wrap;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+/* Sent message bubble color */
+.message.sent .bubble {
+  background: #4169e1;
+  color: #e9e9e9;
+  box-shadow: 0 6px 15px rgba(65, 105, 225, 0.6);
+}
+
+/* Username label above message text */
+.message strong {
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+  color: #82b1ff;
+  user-select: text;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-shadow: 0 0 2px #4169e1;
+}
+
+/* Message form container */
+#messageForm {
+  display: flex;
+  gap: 14px;
+  margin-top: 12px;
+  padding: 16px 0 0;
+  border-top: 1px solid #2c2c2c;
+}
+
+/* Message input */
+#messageInput {
+  flex-grow: 1;
+  background: #1e1e1e;
+  border: none;
+  border-radius: 24px;
+  padding: 14px 20px;
+  font-size: 16px;
+  color: #eee;
+  box-shadow: inset 0 0 10px #4169e1aa;
+  outline-offset: 2px;
+  outline-color: #4169e1;
+  transition: background 0.25s ease;
+  user-select: text;
+}
+
+#messageInput::placeholder {
+  color: #777;
+}
+
+#messageInput:focus {
+  background: #2a2a2a;
+}
+
+/* Send button */
+#messageForm button {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #4169e1;
+  border: none;
+  color: #f0f0f0;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 15px #4169e1cc;
+  transition: background 0.3s ease;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#messageForm button:hover {
+  background: #557de8;
+  box-shadow: 0 0 25px #557de8cc;
 }
