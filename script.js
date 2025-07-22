@@ -5,11 +5,7 @@ const HEADERS = {
 };
 
 let messages = [];
-let pfps = [
-  'profile-pictures/car.jpg',
-  'profile-pictures/spiderman.jpg',
-  'profile-pictures/messi.jpg'
-];
+let pfps = ['profile pictures/buddha.jpg','profile pictures/adidas.jpg','profile pictures/barcelona.jpg','profile pictures/car.jpg','profile pictures/messi.jpg','profile pictures/defult.jpg','profile pictures/drawing.jpg','profile pictures/laptop.jpg','profile pictures/spiderman.jpg']
 let pfpIndex = 0;
 
 const profileSection = document.getElementById('profileSection');
