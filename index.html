@@ -20,15 +20,13 @@
       <button id="joinBtn" onclick="createAccount()">Join Chat</button>
     </div>
     <div id="chatSection" class="panel">
-      <header>
-        Chatting as <span id="currentUsername"></span>
-      </header>
-      <div id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
-      <form id="messageForm" autocomplete="off" aria-label="Send message form">
-        <input id="messageInput" type="text" placeholder="Type a message..." autocomplete="off" />
-        <button type="submit" aria-label="Send message">➤</button>
-      </form>
-    </div>
+  <header>Chatting as <span id="currentUsername"></span></header>
+  <div id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions"></div>
+  <form id="messageForm" autocomplete="off" aria-label="Send message form">
+    <input id="messageInput" type="text" placeholder="Type a message..." autocomplete="off" required minlength="1" />
+    <button type="submit" aria-label="Send message">➤</button>
+  </form>
+</div>
   </div>
 
   <script src="script.js"></script>
