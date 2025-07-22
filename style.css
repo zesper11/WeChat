@@ -7,6 +7,8 @@
   flex-direction: column;
   overflow: hidden;
   position: relative;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Profile and Chat panels: only one active at a time */
