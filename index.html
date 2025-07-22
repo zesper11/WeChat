@@ -155,9 +155,11 @@
     const sendBtn = document.querySelector('.send-btn');
     const chatInterface = document.querySelector('.main-chat-interface');
 
-    const API_URL = 'https://api.jsonbin.io/v3/b/687ce881ee4b395e61f23b17/latest';
+    const API_URL = 'https://api.jsonbin.io/v3/b/687ce881ee4b395e61f23b17';
+    const API_LATEST = `${API_URL}/latest`;
     const HEADERS = {
-      'X-Master-Key': '$2a$10$fv8piFnoMQmqN2haULO6B.J7lBcThIhQmnhQqchrj1CuG3uJ6E95m'
+      'X-Master-Key': '$2a$10$fv8piFnoMQmqN2haULO6B.J7lBcThIhQmnhQqchrj1CuG3uJ6E95m',
+      'Content-Type': 'application/json'
     };
 
     let messages = [];
@@ -188,7 +190,7 @@
     });
 
     function loadMessages() {
-      fetch(API_URL, { headers: HEADERS })
+      fetch(API_LATEST, { headers: HEADERS })
         .then(res => res.json())
         .then(data => {
           chatInterface.innerHTML = '';
@@ -216,6 +218,37 @@
         .catch(err => console.error('Failed to fetch messages:', err));
     }
 
+    function sendMessage() {
+      const message = messageInput.value.trim();
+      if (!message) return;
+
+      const newMsg = {
+        username: localStorage.getItem('username'),
+        pfp: localStorage.getItem('pfp'),
+        date: new Date().toISOString(),
+        message: message
+      };
+
+      messages.push(newMsg);
+
+      fetch(API_URL, {
+        method: 'PUT',
+        headers: HEADERS,
+        body: JSON.stringify(messages)
+      })
+      .then(res => res.json())
+      .then(() => {
+        messageInput.value = '';
+        loadMessages();
+      })
+      .catch(err => console.error('Failed to send message:', err));
+    }
+
+    sendBtn.addEventListener('click', sendMessage);
+    messageInput.addEventListener('keypress', e => {
+      if (e.key === 'Enter') sendMessage();
+    });
+
     function whileLoading() {
       if (localStorage.getItem('username')) {
         createAccountSection.style.display = 'none';
@@ -227,7 +260,7 @@
     }
 
     whileLoading();
-    setInterval(loadMessages, 1000);
+    setInterval(loadMessages, 500);
   </script>
 </body>
 </html>
