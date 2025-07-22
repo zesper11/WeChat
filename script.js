@@ -70,11 +70,10 @@ function loadMessages() {
       messages = data.record || [];
 
       if (messages.length > 0) {
-        messages.forEach(msg => {
-        //   console.log(`${msg.username}: ${msg.message}`);
-        messageReceived.textContent = msg.message;
-        console.log(msg.message)
-
+        messages.forEach((msg, i) => {
+          if (messageReceived[i]) {
+            messageReceived[i].textContent = msg.message;
+          }
         });
       } else {
         console.warn('No messages to display.');
@@ -82,7 +81,3 @@ function loadMessages() {
     })
     .catch(err => console.error('Failed to fetch messages:', err));
 }
-
-
-loadMessages(); // first time immediately
-setInterval(loadMessages, 1000); 
